@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: StatefulSet 
+metadata:
+  name: colonies-server
+  labels:
+    app: colonies
+spec:
+  serviceName: "colonies-internal"
+  replicas: {{ (int .Values.ColoniesServerReplicas) }}
+  selector:
+    matchLabels:
+      app: colonies
+  template:
+     metadata:
+       annotations:
+         timestamp: {{ now | quote }}
+       labels:
+         app: colonies
+     spec:
+       initContainers:
+       - name: setupdb 
+         image: {{ .Values.ColoniesServerImage | quote }}
+         imagePullPolicy: "Always"
+         command: ["/bin/colonies", "database", "create"]
+         envFrom:
+           - configMapRef:
+               name: colonies-config
+       containers:
+       - name: colonies
+         image: {{ .Values.ColoniesServerImage | quote }}
+         imagePullPolicy: "Always"
+         ports:
+           - containerPort: 80
+           - containerPort: 2379
+             name: client
+           - containerPort: 2380
+             name: peer
+         envFrom:
+           - configMapRef:
+               name: colonies-config
+         volumeMounts:
+           - name: etcd-data
+             mountPath: /var/run/etcd
+         resources:
+          limits:
+            cpu: {{ (.Values.ColoniesServerCPU | quote) }}
+            memory: {{ (.Values.ColoniesServerMemory | quote) }}
+          requests:
+            cpu: {{ (.Values.ColoniesServerCPU | quote) }}
+            memory: {{ (.Values.ColoniesServerMemory | quote) }}
+         command:
+           - /bin/sh
+           - -ec 
+           - |
+             REPLICAS={{ (int .Values.ColoniesServerReplicas) }}
+             PEERS=""
+             for i in $(seq 0 $((${REPLICAS} - 1))); do
+                PEERS="${PEERS}${PEERS:+,}colonies-server-${i}=colonies-server-${i}.colonies-internal:2380"
+             done
+             exec colonies server start --etcdname ${HOSTNAME} --etcdhost ${HOSTNAME} --etcdclientport 2379 --etcdpeerport 2380 --initial-cluster ${PEERS} --etcddatadir /var/run/etcd
+  volumeClaimTemplates: 
+    - metadata:
+        name: etcd-data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: {{ (.Values.StorageClassName) }}
+        resources:
+          requests:
+            storage: 1Gi
+
+
+
+
+
+
