@@ -35,6 +35,8 @@ spec:
              name: client
            - containerPort: 2380
              name: peer
+           - containerPort: 2381 
+             name: relay
          envFrom:
            - configMapRef:
                name: colonies-config
@@ -55,7 +57,7 @@ spec:
              REPLICAS={{ (int .Values.ColoniesServerReplicas) }}
              PEERS=""
              for i in $(seq 0 $((${REPLICAS} - 1))); do
-                PEERS="${PEERS}${PEERS:+,}colonies-server-${i}=colonies-server-${i}.colonies-internal:2380"
+                PEERS="${PEERS}${PEERS:+,}colonies-server-${i}=colonies-server-${i}.colonies-internal:2380:2381:80"
              done
              exec colonies server start --etcdname ${HOSTNAME} --etcdhost ${HOSTNAME} --etcdclientport 2379 --etcdpeerport 2380 --initial-cluster ${PEERS} --etcddatadir /var/run/etcd
   volumeClaimTemplates: 
