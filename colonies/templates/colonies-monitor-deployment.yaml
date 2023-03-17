@@ -1,23 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: coloniesmonitor-deployment
+  name: colonies-monitor-deployment
   labels:
-    app: coloniesmonitor
+    app: colonies-monitor
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: coloniesmonitor
+      app: colonies-monitor
   template:
      metadata:
        annotations:
          timestamp: {{ now | quote }}
        labels:
-         app: coloniesmonitor
+         app: colonies-monitor
      spec:
+       imagePullSecrets:
+       - name: {{ .Values.ImagePullSecret | quote }}
        containers:
-       - name: coloniesmonitor
+       - name: colonies-monitor
          image: {{ .Values.ColoniesServerImage | quote }}
          imagePullPolicy: "Always"
          command: ["colonies", "monitor", "start"]
@@ -25,4 +27,4 @@ spec:
            - containerPort: 80
          envFrom:
            - configMapRef:
-               name: coloniesmonitor-config
+               name: colonies-monitor-config

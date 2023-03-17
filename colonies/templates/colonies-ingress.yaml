@@ -1,11 +1,11 @@
+{{ if .Values.Ingress }}
 apiVersion: networking.k8s.io/v1 
 kind: Ingress
 metadata:
   name: colonies-ingress
   annotations:
-    kubernetes.io/ingress.class: traefik
+    kubernetes.io/ingress.class: nginx 
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    traefik.ingress.kubernetes.io/router.middlewares: colonies-redirect@kubernetescrd
 spec:
   rules:
   - host: {{ .Values.ColoniesServerHostname | quote }} 
@@ -19,6 +19,7 @@ spec:
               port: 
                 number: 80
   tls:
-    - secretName: colonies-tls
-      hosts:
+    - hosts:
         - {{ .Values.ColoniesServerHostname | quote }}
+      secretName: colonies-tls
+{{ end }}

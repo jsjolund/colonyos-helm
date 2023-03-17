@@ -1,6 +1,0 @@
-apiVersion: v1
-name: colonies-server
-description: A helm chart for deploying Colonies servers on Kubernetes
-type: application
-version: 0.0.1
-appVersion: 0.0.1

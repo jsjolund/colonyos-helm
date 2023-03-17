@@ -1,0 +1,39 @@
+# General settings
+StorageClassName: longhorn 
+Timezone: "Europe/Stockholm"
+
+Ingress: true 
+ImagePullSecret: ""
+
+  # Colonies server settings
+ColoniesServerHostname: "colonies.colonyos.io"
+ColoniesServerReplicas: 1 
+ColoniesServerImage: "colonyos/colonies:latest"
+ColoniesServerID: "039231c7644e04b6895471dd5335cf332681c54e27f81fac54f9067b3f2c0103"
+ColoniesServerPrvKey: "fcc79953d8a751bf41db661592dc34d30004b1a651ffa0725b03ac227641499d"
+ColoniesServerCPU: "10000m"
+ColoniesServerMemory: "16000Mi" 
+ColoniesDBHost: "colonies-postgres-service.colonies"
+ColoniesDBPort: "5432"
+ColoniesVerbose: true
+ColoniesExclusiveAssign: true
+ColoniesCronCheckerPeriod: "1000"
+ColoniesGeneratorCheckerPeriod: "500"
+
+# PostgreSQL settings
+DBUser: "postgres"
+DBPassword: "rFcLGNkgsNtksg6Pgtn9CumL4xXBQ7"
+DBImage: timescale/timescaledb:latest-pg12
+DBCPU: "1000m"
+DBMemory: "1000Mi"
+DBStorage: 10Gi
+
+# Colonies monitoring server settings
+ColoniesMonitorInterval: 2
+ColoniesServerInternalHostname: "colonies-service.colonies"
+
+# Prometheus settings 
+PrometheusImage: prom/prometheus
+PrometheusStorage: 10Gi
+ScrapeIntervall: 10s
+ColoniesMonitoringServer: colonies-monitor-service.colonies

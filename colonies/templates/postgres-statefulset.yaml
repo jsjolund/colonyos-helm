@@ -1,19 +1,22 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet 
 metadata:
-  name: postgres-deployment
+  name: colonies-postgres-statefulset
   labels:
-    app: postgres
+    app: colonies-postgres
 spec:
+  serviceName: "colonies-postgresql-internal"
   replicas: 1
   selector:
     matchLabels:
-      app: postgres
+      app: colonies-postgres
   template:
      metadata:
        labels:
-          app: postgres
+          app: colonies-postgres
      spec:
+         imagePullSecrets:
+         - name: {{ .Values.ImagePullSecret | quote }}
          containers:
            - name: timescaledb
              image: {{ (.Values.DBImage) }} 
@@ -22,10 +25,10 @@ spec:
                - containerPort: 5432
              envFrom:
                - configMapRef:
-                   name: postgres-config
+                   name: colonies-postgres-config
              volumeMounts:
-               - mountPath: /var/lib/postgresql
-                 name: postgresdb
+               - mountPath: /var/lib/postgresql/data
+                 name: colonies-postgresdb
              resources:
                 limits:
                   cpu: {{ (.Values.DBCPU | quote) }} 
@@ -34,6 +37,6 @@ spec:
                   cpu: {{ (.Values.DBCPU | quote) }} 
                   memory: {{ (.Values.DBMemory | quote) }}
          volumes:
-           - name: postgresdb
+           - name: colonies-postgresdb
              persistentVolumeClaim:
-               claimName: db-storage-pvc
+               claimName: colonies-postgresql-pvc

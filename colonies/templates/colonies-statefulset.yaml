@@ -17,6 +17,8 @@ spec:
        labels:
          app: colonies
      spec:
+       imagePullSecrets:
+       - name: {{ .Values.ImagePullSecret | quote }}
        initContainers:
        - name: setupdb 
          image: {{ .Values.ColoniesServerImage | quote }}
@@ -69,9 +71,3 @@ spec:
         resources:
           requests:
             storage: 1Gi
-
-
-
-
-
-

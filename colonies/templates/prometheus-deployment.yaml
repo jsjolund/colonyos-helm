@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: colonies-prometheus-deployment
+  labels:
+    app: colonies-prometheus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: colonies-prometheus 
+  template:
+     metadata:
+       annotations:
+         timestamp: {{ now | quote }}
+       labels:
+         app: colonies-prometheus
+     spec:
+       imagePullSecrets:
+       - name: {{ .Values.ImagePullSecret | quote }} 
+       initContainers:
+       - name: "init-datapath"
+         image: alpine:3.16.2 
+         command: ["chown", "-R", "65534:65534", "/prometheus"]
+         command: ["/bin/chmod","-R","777","/prometheus"]
+         volumeMounts:
+         - name: colonies-prometheus-storage-volume 
+           mountPath: /prometheus
+           subPath: ""
+       containers:
+       - name: colonies-prometheus
+         args:
+            - "--config.file=/etc/prometheus/prometheus.yml"
+            - "--storage.tsdb.path=/prometheus/"
+         image: {{ .Values.PrometheusImage | quote }}
+         imagePullPolicy: "Always"
+         ports:
+           - containerPort: 9090
+         volumeMounts:
+          - name: colonies-prometheus-config-volume
+            mountPath: /etc/prometheus/
+          - name: colonies-prometheus-storage-volume
+            mountPath: /prometheus/
+       volumes:
+         - name: colonies-prometheus-config-volume
+           configMap:
+             defaultMode: 420
+             name: colonies-prometheus-server-conf
+         - name: colonies-prometheus-storage-volume
+           persistentVolumeClaim:
+             claimName: colonies-prometheus-storage-pvc
