@@ -18,4 +18,5 @@ data:
   COLONIES_CRON_CHECKER_PERIOD: {{ .Values.ColoniesCronCheckerPeriod | quote }}
   COLONIES_GENERATOR_CHECKER_PERIOD: {{ .Values.ColoniesGeneratorCheckerPeriod | quote }}
   COLONIES_EXCLUSIVE_ASSIGN: {{ .Values.ColoniesExclusiveAssign | quote }}
+  COLONIES_ALLOW_EXECUTOR_REREGISTER: {{ .Values.ColoniesAllowExecutorReregister | quote }}
   TZ: {{ .Values.Timezone | quote }}
