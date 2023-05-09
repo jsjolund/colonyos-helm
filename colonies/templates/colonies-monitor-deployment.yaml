@@ -28,3 +28,8 @@ spec:
          envFrom:
            - configMapRef:
                name: colonies-monitor-config
+         resources:
+            limits:
+              memory: {{ (.Values.ColoniesMonitorServerMemory | quote) }}
+            requests:
+              memory: {{ (.Values.ColoniesMonitorServerMemory | quote) }}

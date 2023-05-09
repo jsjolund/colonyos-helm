@@ -31,10 +31,8 @@ spec:
                  name: colonies-postgresdb
              resources:
                 limits:
-                  cpu: {{ (.Values.DBCPU | quote) }} 
                   memory: {{ (.Values.DBMemory | quote) }}
                 requests:
-                  cpu: {{ (.Values.DBCPU | quote) }} 
                   memory: {{ (.Values.DBMemory | quote) }}
          volumes:
            - name: colonies-postgresdb
