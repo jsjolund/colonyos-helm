@@ -12,3 +12,7 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 80
+    - name: profiler-http
+      protocol: TCP
+      port: {{ (int .Values.ColoniesServerProfilerPort) }}
+      targetPort: {{ (int .Values.ColoniesServerProfilerPort) }}

@@ -39,6 +39,8 @@ spec:
              name: peer
            - containerPort: 2381 
              name: relay
+           - containerPort: {{ (int .Values.ColoniesServerProfilerPort) }}
+             name: http-profiler
          envFrom:
            - configMapRef:
                name: colonies-config

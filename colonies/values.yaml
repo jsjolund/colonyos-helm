@@ -9,17 +9,19 @@ ColoniesServerHostname: "colonies.colonyos.io"
 ImagePullSecret: ""
 
   # Colonies server settings
+ColoniesDBHost: "colonies-postgres-service.colonies"
+ColoniesDBPort: "5432"
 ColoniesServerReplicas: 1 
 ColoniesServerImage: "colonyos/colonies:latest"
 ColoniesServerID: "039231c7644e04b6895471dd5335cf332681c54e27f81fac54f9067b3f2c0103"
 ColoniesServerPrvKey: "fcc79953d8a751bf41db661592dc34d30004b1a651ffa0725b03ac227641499d"
 ColoniesServerMemory: "16000Mi" 
-ColoniesDBHost: "colonies-postgres-service.colonies"
-ColoniesDBPort: "5432"
-ColoniesVerbose: true
-ColoniesExclusiveAssign: true
+ColoniesServerProfiler: true 
+ColoniesServerProfilerPort: 6060 
 ColoniesCronCheckerPeriod: "1000"
 ColoniesGeneratorCheckerPeriod: "500"
+ColoniesVerbose: true
+ColoniesExclusiveAssign: true
 ColoniesAllowExecutorReregister: false
 ColoniesRetention: false 
 ColoniesRetentionPolicy: 604800 # 60 seconds * 60 * 24 * 7 = 604800 (1 week)

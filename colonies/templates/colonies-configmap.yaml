@@ -15,10 +15,12 @@ data:
   COLONIES_TLSCERT: "/run/secrets/tls/tls.crt"
   COLONIES_TLSKEY: "/run/secrets/tls/tls.key"
   COLONIES_VERBOSE: {{ .Values.ColoniesVerbose | quote }} 
+  COLONIES_SERVER_PROFILER: {{ .Values.ColoniesServerProfiler | quote }}
+  COLONIES_SERVER_PROFILER_PORT: {{ .Values.ColoniesServerProfilerPort | quote }}
   COLONIES_CRON_CHECKER_PERIOD: {{ .Values.ColoniesCronCheckerPeriod | quote }}
   COLONIES_GENERATOR_CHECKER_PERIOD: {{ .Values.ColoniesGeneratorCheckerPeriod | quote }}
   COLONIES_EXCLUSIVE_ASSIGN: {{ .Values.ColoniesExclusiveAssign | quote }}
   COLONIES_ALLOW_EXECUTOR_REREGISTER: {{ .Values.ColoniesAllowExecutorReregister | quote }}
   COLONIES_RETENTION: {{ .Values.ColoniesRetention | quote }}
-  COLONIES_RETENTION_POLICY:: {{ .Values.ColoniesRetentionPolicy | quote }}
+  COLONIES_RETENTION_POLICY: {{ .Values.ColoniesRetentionPolicy | quote }}
   TZ: {{ .Values.Timezone | quote }}
