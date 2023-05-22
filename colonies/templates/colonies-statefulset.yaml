@@ -47,11 +47,13 @@ spec:
          volumeMounts:
            - name: etcd-data
              mountPath: /var/run/etcd
+         {{ if .Values.ColoniesResourceLimit }}
          resources:
           limits:
             memory: {{ (.Values.ColoniesServerMemory | quote) }}
           requests:
             memory: {{ (.Values.ColoniesServerMemory | quote) }}
+         {{ end }}
          command:
            - /bin/sh
            - -ec 

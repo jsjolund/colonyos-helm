@@ -34,11 +34,13 @@ spec:
             - "--storage.tsdb.path=/prometheus/"
          image: {{ .Values.PrometheusImage | quote }}
          imagePullPolicy: "Always"
+         {{ if .Values.PrometheusResourceLimit }}
          resources:
             limits:
               memory: {{ (.Values.PrometheusMemory | quote) }}
             requests:
               memory: {{ (.Values.PrometheusMemory | quote) }}
+         {{ end }}
          ports:
            - containerPort: 9090
          volumeMounts:

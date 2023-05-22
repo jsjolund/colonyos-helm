@@ -3,6 +3,8 @@ StorageClassName: longhorn
 Timezone: "Europe/Stockholm"
 
 Ingress: true 
+ExposeNodePort: false
+NodePort: 30000  # must be in range 30000-32767 
 # IngressController: nginx
 IngressController: traefik 
 ColoniesServerHostname: "colonies.colonyos.io"
@@ -15,6 +17,7 @@ ColoniesServerReplicas: 1
 ColoniesServerImage: "colonyos/colonies:latest"
 ColoniesServerID: "039231c7644e04b6895471dd5335cf332681c54e27f81fac54f9067b3f2c0103"
 ColoniesServerPrvKey: "fcc79953d8a751bf41db661592dc34d30004b1a651ffa0725b03ac227641499d"
+ColoniesResourceLimit: false 
 ColoniesServerMemory: "16000Mi" 
 ColoniesServerProfiler: true 
 ColoniesServerProfilerPort: 6060 
@@ -30,17 +33,20 @@ ColoniesRetentionPolicy: 604800 # 60 seconds * 60 * 24 * 7 = 604800 (1 week)
 DBUser: "postgres"
 DBPassword: "rFcLGNkgsNtksg6Pgtn9CumL4xXBQ7"
 DBImage: timescale/timescaledb:2.10.0-pg12
+DBResourceLimit: false
 DBMemory: "1000Mi"
 DBStorage: 10Gi
 
 # Colonies monitoring server settings
 ColoniesMonitorInterval: 10
 ColoniesServerInternalHostname: "colonies-service.colonies"
+ColoniesMonitorResourceLimit: false
 ColoniesMonitorServerMemory: "8Gi"
 
 # Prometheus settings 
 PrometheusImage: prom/prometheus
 PrometheusStorage: 10Gi
+PrometheusResourceLimit: false
 PrometheusMemory: "8Gi"
 ScrapeIntervall: 10s
 ColoniesMonitoringServer: colonies-monitor-service.colonies
