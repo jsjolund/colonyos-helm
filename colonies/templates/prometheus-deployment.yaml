@@ -39,6 +39,7 @@ spec:
             limits:
               memory: {{ (.Values.PrometheusMemory | quote) }}
             requests:
+              cpu: {{ (.Values.PrometheusCPU | quote) }}
               memory: {{ (.Values.PrometheusMemory | quote) }}
          {{ end }}
          ports:

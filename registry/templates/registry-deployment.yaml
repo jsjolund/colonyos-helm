@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry-deployment
+  labels:
+    app: registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: registry 
+  template:
+     metadata:
+       labels:
+          app: registry 
+     spec:
+         containers:
+           - name: registry
+             image: registry:2
+             imagePullPolicy: "Always"
+             ports:
+               - containerPort: 6000
+             envFrom:
+               - configMapRef:
+                   name: registry-config
+             volumeMounts:
+               - name: basic-auth 
+                 mountPath: /auth
+                 readOnly: true
+               - name: containerstorage
+                 mountPath: /data
+             {{ if .Values.ResourceLimit }}
+             resources:
+               limits:
+                 memory: {{ (.Values.Memory | quote) }}
+               requests:
+                 cpu: {{ (.Values.CPU | quote) }}
+                 memory: {{ (.Values.Memory | quote) }}
+             {{ end }}
+         volumes:
+            - name: basic-auth 
+              secret:
+                secretName: basic-auth 
+            - name: containerstorage
+              persistentVolumeClaim:
+                claimName: storage-pvc

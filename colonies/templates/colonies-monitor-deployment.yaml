@@ -33,5 +33,6 @@ spec:
             limits:
               memory: {{ (.Values.ColoniesMonitorServerMemory | quote) }}
             requests:
+              cpu: {{ (.Values.ColoniesMonitorServerCPU | quote) }}
               memory: {{ (.Values.ColoniesMonitorServerMemory | quote) }}
          {{ end }}

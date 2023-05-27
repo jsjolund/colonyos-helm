@@ -1,0 +1,15 @@
+StorageClassName: longhorn 
+Timezone: "Europe/Stockholm"
+
+Ingress: true
+IngressController: "traefik"
+IngressPathType: Prefix
+CertManager: true
+Hostname: "registry.colonyos.io"
+ExposeNodePort: false
+NodePort: 30000  # must be in range 30000-32767 
+
+ResourceLimit: false
+CPU: "3000m"
+Memory: "10000Mi"
+Disk: 20Gi

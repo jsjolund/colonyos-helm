@@ -11,13 +11,14 @@ ColoniesServerHostname: "colonies.colonyos.io"
 ImagePullSecret: ""
 
   # Colonies server settings
-ColoniesDBHost: "colonies-postgres-service.colonies"
+ColoniesDBHost: "colonies-postgres-service.colonyos"
 ColoniesDBPort: "5432"
 ColoniesServerReplicas: 1 
 ColoniesServerImage: "colonyos/colonies:latest"
 ColoniesServerID: "039231c7644e04b6895471dd5335cf332681c54e27f81fac54f9067b3f2c0103"
 ColoniesServerPrvKey: "fcc79953d8a751bf41db661592dc34d30004b1a651ffa0725b03ac227641499d"
 ColoniesResourceLimit: false 
+ColoniesServerCPU: "4000m" 
 ColoniesServerMemory: "16000Mi" 
 ColoniesServerProfiler: true 
 ColoniesServerProfilerPort: 6060 
@@ -34,19 +35,22 @@ DBUser: "postgres"
 DBPassword: "rFcLGNkgsNtksg6Pgtn9CumL4xXBQ7"
 DBImage: timescale/timescaledb:2.10.0-pg12
 DBResourceLimit: false
+DBCPU: "1000m"
 DBMemory: "1000Mi"
 DBStorage: 10Gi
 
 # Colonies monitoring server settings
 ColoniesMonitorInterval: 10
-ColoniesServerInternalHostname: "colonies-service.colonies"
+ColoniesServerInternalHostname: "colonies-service.colonyos"
 ColoniesMonitorResourceLimit: false
+ColoniesMonitorServerCPU: "1000m"
 ColoniesMonitorServerMemory: "8Gi"
 
 # Prometheus settings 
 PrometheusImage: prom/prometheus
 PrometheusStorage: 10Gi
 PrometheusResourceLimit: false
+PrometheusCPU: "1000m"
 PrometheusMemory: "8Gi"
 ScrapeIntervall: 10s
-ColoniesMonitoringServer: colonies-monitor-service.colonies
+ColoniesMonitoringServer: colonies-monitor-service.colonyos

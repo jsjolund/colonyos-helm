@@ -52,6 +52,7 @@ spec:
           limits:
             memory: {{ (.Values.ColoniesServerMemory | quote) }}
           requests:
+            cpu: {{ (.Values.ColoniesServerCPU | quote) }}
             memory: {{ (.Values.ColoniesServerMemory | quote) }}
          {{ end }}
          command:

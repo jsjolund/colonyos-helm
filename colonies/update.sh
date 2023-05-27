@@ -1,5 +1,4 @@
 #!/bin/bash
 
-namespace="colonies"
-echo "upgrading ${namespace} ..."
+namespace="colonyos"
 helm upgrade colonies -f values.yaml -n ${namespace} --wait .

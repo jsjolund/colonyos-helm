@@ -34,6 +34,7 @@ spec:
                 limits:
                   memory: {{ (.Values.DBMemory | quote) }}
                 requests:
+                  cpu: {{ (.Values.DBCPU | quote) }}
                   memory: {{ (.Values.DBMemory | quote) }}
              {{ end }}
          volumes:
