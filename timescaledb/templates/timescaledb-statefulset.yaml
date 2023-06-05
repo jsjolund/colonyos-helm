@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: StatefulSet 
+metadata:
+  name: timescaledb-statefulset
+  labels:
+    app: timescaledb
+spec:
+  serviceName: "timescaledb-internal"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: timescaledb
+  template:
+     metadata:
+       labels:
+          app: timescaledb 
+     spec:
+         imagePullSecrets:
+         - name: artifacts-credentials
+         containers:
+           - name: timescaledb-container 
+             image: {{ (.Values.DBImage) }} 
+             imagePullPolicy: "IfNotPresent"
+             ports:
+               - containerPort: 5432
+             envFrom:
+               - configMapRef:
+                   name: timescaledb-config
+             volumeMounts:
+               - mountPath: /var/lib/postgresql/data
+                 name: timescaledb-storage
+             {{ if .Values.DBResourceLimit }}
+             resources:
+                limits:
+                  memory: {{ (.Values.DBMemory | quote) }}
+                requests:
+                  memory: {{ (.Values.DBMemory | quote) }}
+             {{ end  }}
+           - name: backup
+             image: {{ (.Values.BackupImage) }} 
+             imagePullPolicy: "IfNotPresent"
+             envFrom:
+               - configMapRef:
+                   name: backup-config
+             volumeMounts:
+               - mountPath: /backups
+                 name: backup-storage
+             {{ if .Values.BackupResourceLimit }}
+             resources:
+                limits:
+                  memory: {{ (.Values.BackupMemory | quote) }}
+                requests:
+                  memory: {{ (.Values.BackupMemory | quote) }}
+             {{ end  }}
+         volumes:
+           - name: timescaledb-storage
+             persistentVolumeClaim:
+               claimName: timescaledb-pvc
+           - name: backup-storage
+             persistentVolumeClaim:
+               claimName: backup-pvc

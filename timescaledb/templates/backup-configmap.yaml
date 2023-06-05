@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backup-config
+  labels:
+    app: timescaledb
+data:
+  TZ: {{ .Values.Timezone | quote }}
+  FULL_BACKUPS: {{ .Values.FullBackups | quote}}
+  BACKUP_PATH: "/backups"
+  COLONIES_TLS: {{ .Values.ColoniesTLS | quote}}
+  COLONIES_SERVER_HOST: {{ .Values.ColoniesServerHost }}
+  COLONIES_SERVER_PORT: {{ .Values.ColoniesServerPort | quote }}
+  COLONIES_COLONY_ID: {{ .Values.ColoniesColonyID }}
+  COLONIES_COLONY_PRVKEY: {{ .Values.ColoniesColonyPrvKey }}
+  COLONIES_EXECUTOR_ID: {{ .Values.ColoniesExecutorID }}
+  COLONIES_EXECUTOR_PRVKEY: {{ .Values.ColoniesExecutorPrvKey }}
+  AWS_S3_SECURE: {{ .Values.AWSS3Secure | quote }}
+  AWS_S3_INSECURE_SKIP_VERIFY: {{ .Values.AWSS3InsecureSkipVerify | quote }}
+  AWS_S3_ENDPOINT: {{ .Values.AWSS3Endpoint }}
+  AWS_S3_REGION: {{ .Values.AWSS3Region }}
+  AWS_S3_ACCESS_KEY: {{ .Values.AWSS3AccessKey }}
+  AWS_S3_SECRET_ACCESS_KEY: {{ .Values.AWSS3SecretAccessKey }}
+  AWS_S3_BUCKET_NAME: {{ .Values.AWSS3BucketName }}
+  DB_HOST: {{ .Values.DBHost }}
+  DB_PORT: {{ .Values.DBPort | quote }}
+  DB_DATABASE: {{ .Values.DBDatabase }}
+  DB_USER: {{ .Values.DBUser }}
+  DB_PASSWORD: {{ .Values.DBPassword }}

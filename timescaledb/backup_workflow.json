@@ -1,0 +1,9 @@
+[
+    {
+        "nodename": "backup",
+        "funcname": "backup",
+        "conditions": {
+            "executortype": "backup"
+        }
+    }
+]

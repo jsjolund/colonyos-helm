@@ -1,0 +1,39 @@
+# General settings
+StorageClassName: longhorn
+Timezone: "Europe/Stockholm"
+PullSecretName: "prvdockerreg"
+
+# PostgreSQL settings
+DBPassword: "rFcLGNkgsNtksg6Pgtn9CumL4xXBQ7"
+DBImage: timescale/timescaledb:2.10.0-pg12 
+DBResourceLimit: false
+DBMemory: "2000Mi"
+DBStorage: 10Gi
+
+# Backup Colonies Executor Configuration
+FullBackups: "3"
+BackupStorage: 10Gi
+BackupResourceLimit: false
+BackupMemory: "2000Mi"
+BackupImage: "colonyos/backupexecutor:v0.0.4"
+
+ColoniesServerHost: "colonies-service.colonyos"
+ColoniesServerPort: 80
+ColoniesTLS: false
+ColoniesColonyID: "4787a5071856a4acf702b2ffcea422e3237a679c681314113d86139461290cf4"
+ColoniesColonyPrvKey: "ba949fa134981372d6da62b6a56f336ab4d843b22c02a4257dcf7d0d73097514"
+ColoniesExecutorID: "fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac"
+ColoniesExecutorPrvKey: "ddf7f7791208083b6a9ed975a72684f6406a269cfa36f1b1c32045c0a71fff05"
+
+AWSS3Secure: true 
+AWSS3InsecureSkipVerify: false 
+AWSS3Endpoint: "s3.colonyos.io"
+AWSS3Region: ""
+AWSS3AccessKey: "x9xMQu79H1eYAPtj1gRb"
+AWSS3SecretAccessKey: "HQHfte8N0H7YrhjL7v7ez7M7TPmOXTQc87zXyxVn"
+AWSS3BucketName: "backup"
+
+DBHost: "timescaledb-service"
+DBPort: "5432"
+DBDatabase: "postgres"
+DBUser: "postgres"
