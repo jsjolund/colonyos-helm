@@ -159,7 +159,7 @@ time="2023-06-05T15:34:32+02:00" level=info msg="Removing old backup files ..."
 time="2023-06-05T15:34:32+02:00" level=info msg="Backup procedure completed, closing process ..."
 ```
 
-# How to create a cron workflow?
+## How to create a cron workflow?
 Create a file called backup_workflow.json with the content below:
 ```json
 [
@@ -179,7 +179,7 @@ colonies cron add --name backupcron --cron "0 0 1 * * *" --spec ./backup_workflo
 
 A backup will now run at 01:00 UTC, or 03:00 CEST.
 
-# How to restore a backup? 
+## How to restore a backup? 
 1. Login in to the backup pod (it has mc pre-installed) 
 ```console
 kubectl exec --stdin -it -n timescaledb -c backup timescaledb-statefulset-0 -- bash
