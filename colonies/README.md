@@ -6,16 +6,29 @@ Edit `values.yaml` and type:
 ```
 
 # Configuration
-| Syntax    | Description |
-| ---       | ----------- |
-| Header    | Title       |
-| Paragraph | Text        |
+| Setting                | Description                                                                                     | Example value                        |
+| ---                    | -----------                                                                                     | ---                                  |
+| StorageClassName       | Storage class to use for K8s persistant volumes.                                                | local-path, longhorn, ebs-sc         |
+| Timezone               | Timezone.                                                                                       | "Europe/Stockholm"                   |
+| Ingress                | Enable/disable K8s ingress controller. If enabled, ColoniesServerHostName must be specified.    | true/false                           |
+| IngressController      | Ingress controller to use.                                                                      | nginx or traefik                     |
+| ColoniesServerHostname | Host name to use ingress controller. A TLS cert will be automatically obtained by Cert manager. | "colones.colonyos.io"                |
+| ExposeNodePort         | Enable/disable nodeports.                                                                       | true/false                           |
+| NodePort               | Nodeport to use, must be in range 30000-3276.                                                   | 30000                                |
+| ImagePullSecret        | Image pull secret.                                                                              | PASSWORD                             |
+| ColoniesDBHost         | Hostname to PostgreSQL server.                                                                  | "colonies-postgres-service.colonyos" |
+| ColoniesDBPort         | PostgreSQL server port.                                                                         | 5432                                 |
+| ColoniesServerReplica  | Number of Colonies servers to start. See High-availability table below.                         | 3                                    |
+| ColoniesServerImage    | Colonies server Docker image                                                                    | "colonyos/colonies:latest"           |
+| ColoniesServerID       | ECDSA ID (public key). Generate a new ID using "colonies keychain generate" command.            | "039231c7644e04b6895471dd5335cf332681c54e27f81fac54f9067b3f2c0103" |
 
 # Monitoring
-Use this data source in Grafana
-http://prometheus-service.colonies:9090
+Use this data source in Grafana.
+http://prometheus-service.NAMESPACE:9090
 
 # High-availability
+Colonies uses the RAFT protocol internally. See the table below for replication factors and how to set the ColoniesServerReplicas setting. 
+
 | Colonies Server Replicas | Majority | Failure Tolerance |
 |:------------------------:|:--------:|:-----------------:|
 |            1             |    1     |         0         |
