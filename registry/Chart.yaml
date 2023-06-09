@@ -1,6 +1,0 @@
-apiVersion: v1
-name: registry 
-description: A helm chart for deploying a Docker registry 
-type: application
-version: 0.0.1
-appVersion: 0.0.1
