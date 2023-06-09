@@ -4,6 +4,13 @@ Edit `values.yaml` and type:
 ```console
 ./install.sh
 ```
+
+# Configuration
+| Syntax    | Description |
+| ---       | ----------- |
+| Header    | Title       |
+| Paragraph | Text        |
+
 # Monitoring
 Use this data source in Grafana
 http://prometheus-service.colonies:9090
