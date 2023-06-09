@@ -1,5 +1,15 @@
 # Introduction
+The Helm chart will deploy several pods, which is illustrated in the figure below.
+
 ![Architecture](images/colonies_k8s.png)
+| Service                 | Purpose                                                                     |
+| ---                     | -----------                                                                 |
+| PostgreSQL              | Used by Colonies server to store states.                                    |
+| Colonies server(s)      | Provides the Colonies API.                                                  |
+| Colonies monitor server | Provider Prometheus metrics. Scrapes the Colonies API.                      |
+| Prometheus              | Connected to the Colonies Monitor server to build up a monitoring database. |
+| Grafana                 | Visualization service.                                                      |
+| Executors               | Various Colonies executors.                                                 |
 
 # Installation
 Edit `values.yaml` and type:
