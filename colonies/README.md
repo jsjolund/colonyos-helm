@@ -1,3 +1,6 @@
+# Introduction
+![Architecture](images/colonies_k8s.png)
+
 # Installation
 Edit `values.yaml` and type:
 
@@ -33,7 +36,26 @@ Edit `values.yaml` and type:
 | ColoniesExclusiveAssign         | If true, it is guaranteed that exactly one process is assigned to one executor. This could decrease performance. | true/false                           |
 | ColoniesAllowExecutorReregister | If true, it is possible to register an executor with the same name before first deregister it.                   | true/false                           |
 | ColoniesRetention               | Enable/disable retention.                                                                                        | true/false                           |
-| ColoniesRetentionPolicy         | How many seconds to keep processes. Failed processes are never purged.                                           | 604800                               |
+| ColoniesRetentionPolicy         | How many seconds to keep successful processes. Failed, waiting or running processes are never purged.            | 604800                               |
+| DBUser                          | PostgreSQL user name to use when creating database.                                                              | PASSWORD                             |
+| DBPassword                      | PostgreSQL password use when creating database.                                                                  | postgres                             |
+| DBImage                         | PostgreSQL image to use.                                                                                         | postgres:12.15-bullseye              |
+| DBResourceLimit                 | Enable CPU and memory limits.                                                                                    | true/false                           |
+| DBCPU                           | CPU request.                                                                                                     | "4000m"                              |
+| DBMemory                        | Memory request and limit.                                                                                        | "16000Mi"                            |
+| DBStorage                       | PostgreSQL volume size (/var/lib/postgresql)                                                                     | 10Gi                                 |
+| ColoniesMonitorInterval         | How often (in seconds) to run pull Colonies API for statistics.                                                  | 10                                   |
+| ColoniesServerInternalHostname  | Internal hostname inside pod to Colonies server                                                                  | "colonies-service.colonyos"          |
+| ColoniesMonitorResourceLimit    | Enable CPU and memory limits.                                                                                    | true/false                           |
+| ColoniesMonitorCPU              | CPU request.                                                                                                     | "4000m"                              |
+| ColoniesMonitorMemory           | Memory request and limit.                                                                                        | "16000Mi"                            |
+| PrometheusImage                 | Prometheus Docker image.                                                                                         | prom/prometheus                      |
+| PrometheusStorage               | Prometheus volume size                                                                                           | 10Gi                                 |
+| PrometheuResourceLimit          | Enable CPU and memory limits.                                                                                    | true/false                           |
+| PrometheuCPU                    | CPU request.                                                                                                     | "4000m"                              |
+| PrometheuMemory                 | Memory request and limit.                                                                                        | "16000Mi"                            |
+| ScrapeIntervall                 | How often to scrape the Colonies monitor server.                                                                 | 10s                                  |
+| ColoniesMonitoringServer        | Host to the Colonies monitor server.                                                                             | colonies-monitor-service.colonyos    |
 
 # Monitoring
 Use this data source in Grafana.
