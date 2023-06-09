@@ -1,5 +1,5 @@
-NumberOfPods: 2 
-ExecutorsPerPod: 100
+NumberOfPods: 3
+ExecutorsPerPod: 5
 ExecutorResourceLimit: false
 ExecutorMemory: "1Gi"
 ExecutorDockerImage: "colonyos/sleepexecutor:v0.0.1"
