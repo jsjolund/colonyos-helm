@@ -1,5 +1,5 @@
 Replicas: 1
-ExecutorDockerImage: "colonyos/k8sexecutor:v0.0.2"
+ExecutorDockerImage: "colonyos/k8sexecutor:v0.0.4"
 BEMISServerResourceLimit: false 
 BEMISServerMemory: "20000Mi"
 ColoniesServerHost: "colonies.colonyos.io"

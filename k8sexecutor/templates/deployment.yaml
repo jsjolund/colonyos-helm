@@ -21,6 +21,8 @@ spec:
       labels:
         app: k8sexecutor
     spec:
+      serviceAccountName: k8sexecutor-account 
+      automountServiceAccountToken: true
       containers:
       - name: k8sexecutor
         image: {{ .Values.ExecutorDockerImage | quote }}

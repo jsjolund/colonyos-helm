@@ -6,7 +6,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: k8sexecutor-account
-  namespace: k3sexecutor 
+  namespace: k8sexecutor 
   apiGroup: ""
 roleRef:
   kind: Role
