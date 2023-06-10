@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8sexecutor-deployment 
+  labels:
+    app: k8sexecutor 
+spec:
+  replicas: {{ (int .Values.Replicas) }} 
+  selector:
+    matchLabels:
+      app: k8sexecutor 
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0 
+      maxSurge: 1
+  template:
+    metadata:
+      annotations:
+        timestamp: {{ now | quote }}
+      labels:
+        app: k8sexecutor
+    spec:
+      containers:
+      - name: k8sexecutor
+        image: {{ .Values.ExecutorDockerImage | quote }}
+        {{ if .Values.ExecutorResourceLimit }}
+        resources:
+          limits:
+            memory: {{ .Values.ExecutorMemory | quote }}
+          requests:
+            memory: {{ .Values.ExecutorMemory | quote }}
+        {{ end }}
+        env:
+        - name: COLONIES_SERVER_HOST
+          value: "{{ .Values.ColoniesServerHost }}"
+        - name: COLONIES_SERVER_PORT
+          value: "{{ .Values.ColoniesServerPort }}"
+        - name: COLONIES_COLONY_ID
+          value: "{{ .Values.ColoniesColonyID }}"
+        - name: COLONIES_COLONY_PRVKEY
+          value: "{{ .Values.ColoniesColonyPrvKey }}"
+        - name: COLONIES_EXECUTOR_ID
+          value: "{{ .Values.ColoniesExecutorID }}"
+        - name: COLONIES_EXECUTOR_PRVKEY
+          value: "{{ .Values.ColoniesExecutorPrvKey }}"
+        - name: COLONIES_TLS
+          value: "{{ .Values.ColoniesTLS }}"
+        - name: EXECUTOR_NAMESPACE 
+          value: "{{ .Values.ExecutorNamespace }}"
+        - name: COLONIES_VERBOSE
+          value: "true"

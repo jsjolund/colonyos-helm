@@ -1,0 +1,14 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: k8sexecutor-role-binding
+  namespace: executors
+subjects:
+- kind: ServiceAccount
+  name: k8sexecutor-account
+  namespace: k3sexecutor 
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: k8sexecutor-role
+  apiGroup: ""
