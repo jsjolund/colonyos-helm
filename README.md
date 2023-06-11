@@ -4,6 +4,6 @@ This repo contains Helm charts to deploy Colonies, including several executors.
 | Helm chart    | Purpose                                                         |
 | :---          | :-----------                                                    |
 | colonies      | Helm chart to deploy Colonies.                                  |
-| timescaledb   | Helm chart to deploy TimescaleDB server with a backup executor. |
-| sleepexecutor | Helm chart to deploy sleep executor(s).                         |
-| k8sexecutor   | Helm chart to deploy a k8s executor.                            |
+| timescaledb   | Helm chart to deploy TimescaleDB server with a Backup executor. |
+| sleepexecutor | Helm chart to deploy a Sleep executor.                          |
+| k8sexecutor   | Helm chart to deploy a K8s executor.                            |
