@@ -15,7 +15,7 @@ FullBackups: "3"
 BackupStorage: 10Gi
 BackupResourceLimit: false
 BackupMemory: "2000Mi"
-BackupImage: "colonyos/backupexecutor:v0.0.4"
+BackupImage: "colonyos/backupexecutor:v1.0.0"
 
 ColoniesServerHost: "colonies-service.colonyos"
 ColoniesServerPort: 80

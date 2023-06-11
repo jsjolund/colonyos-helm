@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pythonexecutor-deployment 
+  labels:
+    app: pythonexecutor 
+spec:
+  replicas: {{ (int .Values.NumberOfPods) }} 
+  selector:
+    matchLabels:
+      app: pythonexecutor 
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0 
+      maxSurge: 1
+  template:
+    metadata:
+      annotations:
+        timestamp: {{ now | quote }}
+      labels:
+        app: pythonexecutor
+    spec:
+      containers:
+        {{- $coloniesServerHost := (.Values.ColoniesServerHost) }}
+        {{- $coloniesServerPort := (.Values.ColoniesServerPort) }}
+        {{- $coloniesColonyID := (.Values.ColoniesColonyID) }}
+        {{- $coloniesColonyPrvKey := (.Values.ColoniesColonyPrvKey) }}
+        {{- $coloniesExecutorID := (.Values.ColoniesExecutorID) }}
+        {{- $coloniesExecutorPrvKey := (.Values.ColoniesExecutorPrvKey) }}
+        {{- $executorDockerImage := (.Values.ExecutorDockerImage ) }}
+        {{- $executorResourceLimit := (.Values.ExecutorResourceLimit) }}
+        {{- $executorMemory := (.Values.ExecutorMemory) }}
+        {{- range untilStep 0 (int .Values.ExecutorsPerPod) 1 }}
+      - name: pythonexecutor-{{.}}
+        image: {{ $executorDockerImage }}
+        {{ if $executorResourceLimit }}
+        resources:
+          limits:
+            memory: {{ $executorMemory }}
+          requests:
+            memory: {{ $executorMemory }}
+        {{ end }}
+        livenessProbe:
+          initialDelaySeconds: 300
+          periodSeconds: 5
+          timeoutSeconds: 100 
+          successThreshold: 1
+          failureThreshold: 200 
+          httpGet:
+            scheme: HTTP
+            path: /
+            port: 8081
+        env:
+        - name: COLONIES_SERVER_HOST
+          value: "{{ $coloniesServerHost }}"
+        - name: COLONIES_SERVER_PORT
+          value: "{{ $coloniesServerPort }}"
+        - name: COLONIES_COLONY_ID
+          value: "{{ $coloniesColonyID }}"
+        - name: COLONIES_COLONY_PRVKEY
+          value: "{{ $coloniesColonyPrvKey }}"
+        - name: COLONIES_EXECUTOR_ID
+          value: "{{ $coloniesExecutorID }}"
+        - name: COLONIES_EXECUTOR_PRVKEY
+          value: "{{ $coloniesExecutorPrvKey }}"
+        - name: COLONIES_TLS
+          value: "false"
+        - name: COLONIES_VERBOSE
+          value: "true"
+        - name: PODNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+      {{- end }}
