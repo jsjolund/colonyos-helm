@@ -26,7 +26,6 @@ colonies function exec --func backup --targettype backup
 ```console
 colonies process pss --type backup
 ```
-Output:
 ```console
 +------------------------------------------------------------------+----------+------+---------------------+---------------+
 |                                ID                                | FUNCNAME | ARGS |      END TIME       | EXECUTOR TYPE |
@@ -40,7 +39,6 @@ Output:
 ```console
 colonies process psf --type backup
 ```
-Output:
 ```console
 INFO[0000] No failed processes found                     ColonyId=4787a5071856a4acf702b2ffcea422e3237a679c681314113d86139461290cf4
 ```
@@ -49,7 +47,6 @@ INFO[0000] No failed processes found                     ColonyId=4787a5071856a4
 ```console
 colonies process ps --type backup
 ```
-Output:
 ```console
 INFO[0000] No running processes found                     ColonyId=4787a5071856a4acf702b2ffcea422e3237a679c681314113d86139461290cf4
 ```
@@ -58,7 +55,6 @@ INFO[0000] No running processes found                     ColonyId=4787a5071856a
 ```console
 colonies process get -p c88a1451fef4609e2586d42608bad561d80ec196816f8516fb5107c6912ed6b7 --out
 ```
-Output:
 ```json
 {
     "filename": "backup_1685968191.bak",
@@ -76,7 +72,6 @@ The backup procedure took 45 seconds to complete and it took 5 seconds to upload
 ```console
 colonies cron ls
 ```
-Output:
 ```console
 +------------------------------------------------------------------+---------------+
 |                              CRONID                              |     NAME      |
@@ -88,7 +83,6 @@ Output:
 ```console
 colonies cron get --cronid  43d130e6bbb836edd197947dff4390f3b7431e044868f42810d5d8a5781362ac 
 ```
-Output:
 ```console
 Cron:
 +-------------------------+------------------------------------------------------------------+
@@ -147,7 +141,6 @@ mc ls minio/backup/backups --insecure
 ```console
 kubectl logs timescaledb-statefulset-0 -c backup -n timescaledb 
 ```
-Output:
 ```console
 time="2023-06-05T14:44:10+02:00" level=info msg="Backing up database ..."
 time="2023-06-05T15:30:46+02:00" level=info msg="Successfully backup database" ExecTime="2796 seconds" Filename=backup_1685969050.bak Si
