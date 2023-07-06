@@ -15,8 +15,6 @@ spec:
        labels:
           app: colonies-postgres
      spec:
-         imagePullSecrets:
-         - name: {{ .Values.ImagePullSecret | quote }}
          containers:
            - name: timescaledb
              image: {{ (.Values.DBImage) }} 

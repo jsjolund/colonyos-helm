@@ -21,8 +21,6 @@ spec:
        labels:
          app: colonies-prometheus
      spec:
-       imagePullSecrets:
-       - name: {{ .Values.ImagePullSecret | quote }} 
        initContainers:
        - name: "init-datapath"
          image: alpine:3.16.2 

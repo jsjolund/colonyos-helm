@@ -16,8 +16,6 @@ spec:
        labels:
          app: colonies-monitor
      spec:
-       imagePullSecrets:
-       - name: {{ .Values.ImagePullSecret | quote }}
        containers:
        - name: colonies-monitor
          image: {{ .Values.ColoniesServerImage | quote }}
