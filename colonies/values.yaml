@@ -1,5 +1,6 @@
 # General settings
-StorageClassName: longhorn 
+#StorageClassName: longhorn 
+StorageClassName: local-path 
 Timezone: "Europe/Stockholm"
 
 Ingress: true 
@@ -19,7 +20,7 @@ ColoniesServerPrvKey: "fcc79953d8a751bf41db661592dc34d30004b1a651ffa0725b03ac227
 ColoniesResourceLimit: false 
 ColoniesServerCPU: "4000m" 
 ColoniesServerMemory: "16000Mi" 
-ColoniesServerProfiler: true 
+ColoniesServerProfiler: false
 ColoniesServerProfilerPort: 6060 
 ColoniesCronCheckerPeriod: "1000"
 ColoniesGeneratorCheckerPeriod: "500"
