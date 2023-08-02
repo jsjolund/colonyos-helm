@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1 
+kind: Ingress
+metadata:
+  name: notebook-ingress
+  annotations:
+    kubernetes.io/ingress.class: {{ .Values.IngressController }}
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+spec:
+  rules:
+  - host: {{ .Values.NotebookHostname | quote }} 
+    http:
+      paths:
+        - pathType: Prefix 
+          path: /
+          backend:
+            service:
+              name: notebook-service
+              port: 
+                number: 8888
+  tls:
+    - secretName: notebook-tls
+      hosts:
+        - {{ .Values.NotebookHostname | quote }} 

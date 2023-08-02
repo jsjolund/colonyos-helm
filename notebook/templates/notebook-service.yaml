@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: notebook-service
+  labels:
+    app: notebook
+spec:
+  selector:
+    app: notebook
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8888
+      targetPort: 8888

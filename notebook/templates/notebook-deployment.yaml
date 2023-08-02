@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notebook-deployment
+  labels:
+    app: notebook
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notebook
+  template:
+     metadata:
+       labels:
+          app: notebook
+     spec:
+         containers:
+           - name: notebook
+             image: {{ .Values.NotebookImage | quote }} 
+             imagePullPolicy: "Always"
+             ports:
+               - containerPort: 8888
+             envFrom:
+               - configMapRef:
+                   name: notebook-config
+             volumeMounts:
+               - name: storage 
+                 mountPath: /home/jovyan
+             {{ if .Values.NotebookResourceLimit }}
+             nodeSelector:
+   66           accelerator: {{ .Values.NotebookGPUType }}
+             {{ end }}
+             resources:
+               limits:
+                 {{ if .Values.NotebookResourceLimit }}
+                 memory: {{ (.Values.NotebookMemory | quote) }}
+                 {{ end }}
+                 {{ if .Values.NotebookGPU }}
+                    nvidia.com/gpu: {{ .Values.NotebookNumberOfGPUs | quote }}
+                 {{ end }}
+               requests:
+                 {{ if .Values.NotebookResourceLimit }}
+                 cpu: {{ (.Values.NotebookCPU | quote) }}
+                 memory: {{ (.Values.NotebookMemory | quote) }}
+                 {{ end }}
+                 {{ if .Values.NotebookGPU }}
+                    nvidia.com/gpu: {{ .Values.NotebookNumberOfGPUs | quote }}
+                 {{ end }}
+         volumes:
+            - name: storage
+              persistentVolumeClaim:
+                claimName: local-path-pvc

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: notebook-config
+  labels:
+    app: notebook 
+data:
+  COLONIES_SERVER_HOST: {{ .Values.ColoniesServerHost | quote }}
+  COLONIES_SERVER_TLS: {{ .Values.ColoniesServerTLS | quote }}
+  COLONIES_SERVER_PORT: {{ .Values.ColoniesServerPort | quote }} 
+  COLONIES_COLONY_ID: {{ .Values.ColoniesColonyId | quote }}
+  COLONIES_COLONY_PRVKEY: {{ .Values.ColoniesColonyPrvKey | quote }}
+  COLONIES_EXECUTOR_ID: {{ .Values.ColoniesExecutorId | quote }}
+  COLONIES_EXECUTOR_PRVKEY: {{ .Values.ColoniesExecutorPrvKey | quote }}
+  JUPYTER_TOKEN: {{ .Values.NotebookJupyterToken | quote }}
+  JUPYTER_ENABLE_LAB: "yes"
