@@ -38,6 +38,7 @@ DBResourceLimit: false
 DBCPU: "1000m"
 DBMemory: "1000Mi"
 DBStorage: 10Gi
+TimescaleDB: true
 
 # Colonies monitoring server settings
 ColoniesMonitorInterval: 10

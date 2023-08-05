@@ -11,6 +11,7 @@ data:
   COLONIES_DB_PORT: {{ .Values.ColoniesDBPort | quote }}
   COLONIES_DB_USER: {{ .Values.DBUser | quote }} 
   COLONIES_DB_PASSWORD: {{ .Values.DBPassword | quote }}
+  COLONIES_DB_TIMESCALEDB: {{ .Values.TimescaleDB | quote }}
   COLONIES_TLS: "false"
   COLONIES_TLSCERT: "/run/secrets/tls/tls.crt"
   COLONIES_TLSKEY: "/run/secrets/tls/tls.key"
