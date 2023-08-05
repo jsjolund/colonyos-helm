@@ -24,23 +24,37 @@ spec:
       containers:
         {{- $coloniesServerHost := (.Values.ColoniesServerHost) }}
         {{- $coloniesServerPort := (.Values.ColoniesServerPort) }}
-        {{- $coloniesColonyID := (.Values.ColoniesColonyID) }}
+        {{- $coloniesServerTLS := (.Values.ColoniesServerTLS) }}
+        {{- $coloniesColonyId := (.Values.ColoniesColonyId) }}
         {{- $coloniesColonyPrvKey := (.Values.ColoniesColonyPrvKey) }}
-        {{- $coloniesExecutorID := (.Values.ColoniesExecutorID) }}
+        {{- $coloniesExecutorId := (.Values.ColoniesExecutorId) }}
         {{- $coloniesExecutorPrvKey := (.Values.ColoniesExecutorPrvKey) }}
         {{- $executorDockerImage := (.Values.ExecutorDockerImage ) }}
-        {{- $executorResourceLimit := (.Values.ExecutorResourceLimit) }}
+        {{- $executorResourceLimit := (.Values.ExecutorResourceLimit ) }}
         {{- $executorMemory := (.Values.ExecutorMemory) }}
+        {{- $executorCPU := (.Values.ExecutorCPU) }}
+        {{- $executorGPU := (.Values.ExecutorGPU) }}
+        {{- $executorGPUs := (.Values.ExecutorGPUs) }}
+        {{- $executorGPUType := (.Values.ExecutorGPUType) }}
         {{- range untilStep 0 (int .Values.ExecutorsPerPod) 1 }}
       - name: pythonexecutor-{{.}}
         image: {{ $executorDockerImage }}
-        {{ if $executorResourceLimit }}
         resources:
           limits:
+            {{ if $executorResourceLimit }}
             memory: {{ $executorMemory }}
+            {{ end }}
+            {{ if $executorGPU }}
+            nvidia.com/gpu: {{ $executorGPUs }}
+            {{ end }}
           requests:
+            {{ if $executorResourceLimit }}
+            cpu: {{ $executorCPU }}
             memory: {{ $executorMemory }}
-        {{ end }}
+            {{ end }}
+            {{ if $executorGPU }}
+            nvidia.com/gpu: {{ $executorGPUs }}
+            {{ end }}
         livenessProbe:
           initialDelaySeconds: 300
           periodSeconds: 5
@@ -56,16 +70,16 @@ spec:
           value: "{{ $coloniesServerHost }}"
         - name: COLONIES_SERVER_PORT
           value: "{{ $coloniesServerPort }}"
+        - name: COLONIES_SERVER_TLS
+          value: "{{ $coloniesServerTLS }}"
         - name: COLONIES_COLONY_ID
-          value: "{{ $coloniesColonyID }}"
+          value: "{{ $coloniesColonyId }}"
         - name: COLONIES_COLONY_PRVKEY
           value: "{{ $coloniesColonyPrvKey }}"
         - name: COLONIES_EXECUTOR_ID
-          value: "{{ $coloniesExecutorID }}"
+          value: "{{ $coloniesExecutorId }}"
         - name: COLONIES_EXECUTOR_PRVKEY
           value: "{{ $coloniesExecutorPrvKey }}"
-        - name: COLONIES_TLS
-          value: "false"
         - name: COLONIES_VERBOSE
           value: "true"
         - name: PODNAME
