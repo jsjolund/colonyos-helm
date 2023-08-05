@@ -1,7 +1,7 @@
 IngressController: "traefik"
 
 NotebookHostname: "notebook.colonyos.io"
-NotebookJupyterToken: ""
+NotebookJupyterToken: "JvLQAMPm8HVHizwrqNMK"
 NotebookImage: "colonyos/notebook:latest"
 NotebookStorageClass: local-path
 NotebookStorageSize: "100Gi"
@@ -15,7 +15,7 @@ NotebookGPUType: "nvidia-gtx-2080ti"
 ColoniesServerHost: "colonies.colonyos.io"
 ColoniesServerPort: 443
 ColoniesServerTLS: "true" 
-ColoniesColonyId: ""
-ColoniesColonyPrvKey: ""
-ColoniesExecutorId: ""
-ColoniesExecutorPrvKey: ""
+ColoniesColonyId: "93975de0d2050dfe5ed81d028be250754f633bf2eef9f76db4f3e61b5c950d9c"
+ColoniesColonyPrvKey: "c552e7f91157c1c5b30c84e8b26ef20f44f1f15f3c95454740b6e9ce59e05807"
+ColoniesExecutorId: "c23c6d70e490e90a60347bb89d04832814f6a2f74b38bd1bdffbda1f7c34e687"
+ColoniesExecutorPrvKey: "8aed8333fe1e18cb47f4a59482f3f8e6bbec69079f2b6db61a72d8b174bcb133"

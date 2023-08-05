@@ -26,7 +26,7 @@ spec:
              volumeMounts:
                - name: storage 
                  mountPath: /home/jovyan
-             {{ if .Values.NotebookResourceLimit }}
+             {{ if .Values.NotebookGPU }}
              nodeSelector:
    66           accelerator: {{ .Values.NotebookGPUType }}
              {{ end }}
