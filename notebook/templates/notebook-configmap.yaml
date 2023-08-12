@@ -14,3 +14,10 @@ data:
   COLONIES_EXECUTOR_PRVKEY: {{ .Values.ColoniesExecutorPrvKey | quote }}
   JUPYTER_TOKEN: {{ .Values.NotebookJupyterToken | quote }}
   JUPYTER_ENABLE_LAB: "yes"
+  AWS_S3_ENDPOINT: {{ .Values.AWSS3Endpoint | quote }}
+  AWS_S3_ACCESSKEY: {{ .Values.AWSS3Accesskey | quote }}
+  AWS_S3_SECRETKEY: {{ .Values.AWSS3Secretkey | quote }}
+  AWS_S3_REGION_KEY: {{ .Values.AWSS3Region | quote }}
+  AWS_S3_BUCKET: {{ .Values.AWSS3Bucket | quote }}
+  AWS_S3_TLS: {{ .Values.AWSS3TLS | quote }}
+  AWS_S3_SKIPVERIFY: {{ .Values.AWSS3InsecureSkipVerify | quote }}

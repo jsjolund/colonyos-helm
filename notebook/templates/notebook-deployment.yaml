@@ -14,6 +14,27 @@ spec:
        labels:
           app: notebook
      spec:
+         initContainers:
+           - name: add-colonies-colonykey
+             image: {{ .Values.NotebookImage | quote }}
+             imagePullPolicy: "Always"
+             command: ["/usr/local/bin/colonies", "keychain", "add", "--id", "{{ .Values.ColoniesColonyId }}", "--prvkey", "{{ .Values.ColoniesColonyPrvKey }}"]
+             envFrom:
+             - configMapRef:
+                 name: notebook-config
+             volumeMounts:
+               - name: storage 
+                 mountPath: /root
+           - name: add-colonies-executorkey
+             image: {{ .Values.NotebookImage | quote }}
+             imagePullPolicy: "Always"
+             command: ["/usr/local/bin/colonies", "keychain", "add", "--id", "{{ .Values.ColoniesExecutorId }}", "--prvkey", "{{ .Values.ColoniesExecutorPrvKey }}"]
+             envFrom:
+             - configMapRef:
+                 name: notebook-config
+             volumeMounts:
+               - name: storage 
+                 mountPath: /root
          containers:
            - name: notebook
              image: {{ .Values.NotebookImage | quote }} 
@@ -25,10 +46,10 @@ spec:
                    name: notebook-config
              volumeMounts:
                - name: storage 
-                 mountPath: /home/jovyan
+                 mountPath: /root
              {{ if .Values.NotebookGPU }}
              nodeSelector:
-   66           accelerator: {{ .Values.NotebookGPUType }}
+                accelerator: {{ .Values.NotebookGPUType }}
              {{ end }}
              resources:
                limits:
