@@ -2,7 +2,7 @@ IngressController: "traefik"
 
 NotebookHostname: "notebook.colonyos.io"
 NotebookJupyterToken: "JvLQAMPm8HVHizwrqNMK"
-NotebookImage: "colonyos/notebook:latest"
+NotebookImage: "colonyos/notebook:v1.0.6"
   #NotebookStorageClass: local-path
 NotebookStorageClass: longhorn
 NotebookStorageSize: "100Gi"

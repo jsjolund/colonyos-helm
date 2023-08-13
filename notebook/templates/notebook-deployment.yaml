@@ -35,6 +35,13 @@ spec:
              volumeMounts:
                - name: storage 
                  mountPath: /root
+           - name: post-install
+             image: {{ .Values.NotebookImage | quote }}
+             imagePullPolicy: "Always"
+             command: ["/bin/post_install.sh"]
+             volumeMounts:
+               - name: storage 
+                 mountPath: /root
          containers:
            - name: notebook
              image: {{ .Values.NotebookImage | quote }} 
