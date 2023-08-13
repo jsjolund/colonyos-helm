@@ -10,7 +10,7 @@ NotebookResourceLimit: false
 NotebookServerCPU: "1000m"
 NotebookMemory: "8Gi"
 NotebookGPU: false
-NotebookNumberOfGPUs: 1
+NotebookGPUs: 1
 NotebookGPUType: "nvidia-gtx-2080ti"
 
 ColoniesServerHost: "colonies.colonyos.io"

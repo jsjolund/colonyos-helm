@@ -42,6 +42,10 @@ spec:
              volumeMounts:
                - name: storage 
                  mountPath: /root
+         {{ if .Values.NotebookGPU }}
+         nodeSelector:
+            accelerator: {{ .Values.NotebookGPUType }}
+         {{ end }}
          containers:
            - name: notebook
              image: {{ .Values.NotebookImage | quote }} 
@@ -54,17 +58,13 @@ spec:
              volumeMounts:
                - name: storage 
                  mountPath: /root
-             {{ if .Values.NotebookGPU }}
-             nodeSelector:
-                accelerator: {{ .Values.NotebookGPUType }}
-             {{ end }}
              resources:
                limits:
                  {{ if .Values.NotebookResourceLimit }}
                  memory: {{ (.Values.NotebookMemory | quote) }}
                  {{ end }}
                  {{ if .Values.NotebookGPU }}
-                    nvidia.com/gpu: {{ .Values.NotebookNumberOfGPUs | quote }}
+                    nvidia.com/gpu: {{ .Values.NotebookGPUs | quote }}
                  {{ end }}
                requests:
                  {{ if .Values.NotebookResourceLimit }}
@@ -72,7 +72,7 @@ spec:
                  memory: {{ (.Values.NotebookMemory | quote) }}
                  {{ end }}
                  {{ if .Values.NotebookGPU }}
-                    nvidia.com/gpu: {{ .Values.NotebookNumberOfGPUs | quote }}
+                    nvidia.com/gpu: {{ .Values.NotebookGPUs | quote }}
                  {{ end }}
          volumes:
             - name: storage
