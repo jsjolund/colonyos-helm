@@ -1,0 +1,29 @@
+NumberOfPods: 1
+ExecutorsPerPod: 1
+ExecutorResourceLimit: true
+ExecutorMemory: "1Gi"
+ExecutorType: "gpu-mlexecutor"
+ExecutorCPU: "4000m"
+ExecutorGPU: true 
+ExecutorGPUs: 1
+ExecutorGPUType: "nvidia-gtx-2080ti"
+ExecutorImage: "colonyos/mlexecutor:v1.0.2"
+ExecutorLocationDesc: "ICE Datacenter"
+ExecutorLocationLong: "65.61204640586546"
+ExecutorLocationLat: "22.132275667285477"
+
+ColoniesServerHost: "colonies.colonyos.io"
+ColoniesServerPort: 443
+ColoniesServerTLS: "true" 
+ColoniesColonyId: "4787a5071856a4acf702b2ffcea422e3237a679c681314113d86139461290cf4"
+ColoniesColonyPrvKey: "ba949fa134981372d6da62b6a56f336ab4d843b22c02a4257dcf7d0d73097514"
+ColoniesExecutorId: "fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac"
+ColoniesExecutorPrvKey: "ddf7f7791208083b6a9ed975a72684f6406a269cfa36f1b1c32045c0a71fff05"
+
+AWSS3Endpoint: "s3.colonyos.io:443"
+AWSS3TLS: "true"
+AWSS3InsecureSkipVerify: "false"
+AWSS3Accesskey: "hGi9unKnSuHeGwuOS3mo"
+AWSS3Secretkey: "sdT56nOLDS7kUwxaztTHHLAzextZhKuAHcCxzziu"
+AWSS3Region: ""
+AWSS3Bucket: "colonies-prod"
