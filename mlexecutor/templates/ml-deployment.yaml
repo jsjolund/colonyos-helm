@@ -5,7 +5,7 @@ metadata:
   labels:
     app: ml
 spec:
-  replicas: 1
+  replicas: {{ .Values.NumberOfPods }}
   selector:
     matchLabels:
       app: ml

@@ -1,13 +1,12 @@
-NumberOfPods: 1
-ExecutorsPerPod: 1
+NumberOfPods: 6 
 ExecutorResourceLimit: true
-ExecutorMemory: "1Gi"
+ExecutorMemory: "60Gi"
 ExecutorType: "gpu-mlexecutor"
 ExecutorCPU: "4000m"
 ExecutorGPU: true 
 ExecutorGPUs: 1
 ExecutorGPUType: "nvidia-gtx-2080ti"
-ExecutorImage: "colonyos/mlexecutor:v1.0.2"
+ExecutorImage: "colonyos/mlexecutor:v1.0.3"
 ExecutorLocationDesc: "ICE Datacenter"
 ExecutorLocationLong: "65.61204640586546"
 ExecutorLocationLat: "22.132275667285477"
