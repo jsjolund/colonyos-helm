@@ -14,7 +14,7 @@ ColoniesServerHostname: "colonies.colonyos.io"
 ColoniesDBHost: "colonies-postgres-service.colonyos"
 ColoniesDBPort: "5432"
 ColoniesServerReplicas: 1 
-ColoniesServerImage: "colonyos/colonies:v1.5.3"
+ColoniesServerImage: "colonyos/colonies:v1.5.5"
 ColoniesServerID: "039231c7644e04b6895471dd5335cf332681c54e27f81fac54f9067b3f2c0103"
 ColoniesServerPrvKey: "fcc79953d8a751bf41db661592dc34d30004b1a651ffa0725b03ac227641499d"
 ColoniesResourceLimit: false 
