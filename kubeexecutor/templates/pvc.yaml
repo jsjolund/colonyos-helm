@@ -5,7 +5,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: longhorn
+  storageClassName: {{ .Values.StorageClass }}
   resources:
     requests:
       storage: 1Gi

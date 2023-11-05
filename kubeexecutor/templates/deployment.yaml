@@ -35,6 +35,7 @@ spec:
           limits:
             memory: {{ .Values.ExecutorMemory | quote }}
           requests:
+            cpu: {{ (.Values.ExecutorCPU | quote) }}
             memory: {{ .Values.ExecutorMemory | quote }}
         {{ end }}
         volumeMounts:
