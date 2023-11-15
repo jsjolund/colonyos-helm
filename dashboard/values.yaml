@@ -8,7 +8,7 @@ NodePort: 30000  # must be in range 30000-32767
 IngressController: traefik 
 DashboardHostname: "dashboard.colonyos.io"
 
-DashboardImage: "colonyos/dashboard"
+DashboardImage: "colonyos/dashboard:v1.0.3"
 
 DashboardResourceLimit: false
 DashboardCPU: "1000m"
