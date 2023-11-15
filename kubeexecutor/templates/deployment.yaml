@@ -112,3 +112,5 @@ spec:
           value: "{{ .Values.ExecutorK8sNamespace }}"
         - name: EXECUTOR_K8S_PVC
           value: "{{ .Values.ExecutorK8sPVC }}"
+        - name: EXECUTOR_ADD_DEBUG_LOGS
+          value: "false"
