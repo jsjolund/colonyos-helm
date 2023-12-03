@@ -4,8 +4,9 @@ ExecutorDockerImage: "colonyos/kubeexecutor"
 ColoniesServerHost: "server.colonyos.io"
 ColoniesServerPort: 443
 ColoniesTLS: true
-ColoniesColonyID: ""
+ColoniesColonyName: ""
 ColoniesColonyPrvKey: ""
+ColoniesExecutorName: ""
 ColoniesExecutorID: ""
 ColoniesExecutorPrvKey: ""
 AWSS3Endpoint: ""

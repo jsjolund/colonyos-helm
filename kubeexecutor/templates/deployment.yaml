@@ -46,12 +46,14 @@ spec:
           value: "{{ .Values.ColoniesServerHost }}"
         - name: COLONIES_SERVER_PORT
           value: "{{ .Values.ColoniesServerPort }}"
-        - name: COLONIES_COLONY_ID
-          value: "{{ .Values.ColoniesColonyID }}"
+        - name: COLONIES_COLONY_NAME
+          value: "{{ .Values.ColoniesColonyName }}"
         - name: COLONIES_COLONY_PRVKEY
           value: "{{ .Values.ColoniesColonyPrvKey }}"
         - name: COLONIES_EXECUTOR_ID
           value: "{{ .Values.ColoniesExecutorID }}"
+        - name: COLONIES_EXECUTOR_NAME
+          value: "{{ .Values.ColoniesExecutorName }}"
         - name: COLONIES_EXECUTOR_PRVKEY
           value: "{{ .Values.ColoniesExecutorPrvKey }}"
         - name: COLONIES_TLS
