@@ -1,0 +1,114 @@
+apiVersion: v1
+entries:
+  colonies:
+  - apiVersion: v1
+    appVersion: 0.0.1
+    created: "2024-02-15T14:57:53.926702783Z"
+    description: A helm chart for deploying Colonies servers
+    digest: 61e081652067e86207b1c3418d9bf9aa79734a2a79ab4ea5dc2d1660200d84d6
+    name: colonies
+    type: application
+    urls:
+    - https://github.com/jsjolund/colonyos-helm/releases/download/colonies-0.0.1/colonies-0.0.1.tgz
+    version: 0.0.1
+  dashboard:
+  - apiVersion: v1
+    appVersion: 0.0.1
+    created: "2024-02-15T14:57:54.054935914Z"
+    description: A helm chart for deploying ColonyOS Dashboard app
+    digest: e828ac2b77115ef545184cb1cecfef72e68ce864246adf1acf053319345afac2
+    name: dashboard
+    type: application
+    urls:
+    - https://github.com/jsjolund/colonyos-helm/releases/download/dashboard-0.0.1/dashboard-0.0.1.tgz
+    version: 0.0.1
+  echoexecutor:
+  - apiVersion: v1
+    appVersion: 0.0.1
+    created: "2024-02-15T14:57:54.190257025Z"
+    description: A Helm chart for an Echo executor
+    digest: b1b36f7bf634895c943268e6c0c6508d93ad436f1d188c5128aba8553c9d4a55
+    name: echoexecutor
+    type: application
+    urls:
+    - https://github.com/jsjolund/colonyos-helm/releases/download/echoexecutor-0.0.1/echoexecutor-0.0.1.tgz
+    version: 0.0.1
+  k8sexecutor:
+  - apiVersion: v1
+    appVersion: 0.0.1
+    created: "2024-02-15T14:57:54.382447513Z"
+    description: A Helm chart for a K8s executor
+    digest: f146203aa27d75e5d0481654bcdb43c180dff7ad5f625585635cccd32e3b8006
+    name: k8sexecutor
+    type: application
+    urls:
+    - https://github.com/jsjolund/colonyos-helm/releases/download/k8sexecutor-0.0.1/k8sexecutor-0.0.1.tgz
+    version: 0.0.1
+  keycloak:
+  - apiVersion: v1
+    appVersion: 0.0.1
+    created: "2024-02-15T14:57:54.508499589Z"
+    description: A helm chart for deploying Keycloak
+    digest: 9566128f32a42d511d642ace28ec6d1d4e17c0f5c5d1a180dd463a8b4249603a
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/jsjolund/colonyos-helm/releases/download/keycloak-0.0.1/keycloak-0.0.1.tgz
+    version: 0.0.1
+  kubeexecutor:
+  - apiVersion: v1
+    appVersion: 0.0.1
+    created: "2024-02-15T14:57:54.622579135Z"
+    description: A Helm chart for a K8s kubeexecutor
+    digest: db7b2d0d049bf5ad92869e90bac1ed078bb0b545adbdd363816a4d41f5adc07f
+    name: kubeexecutor
+    type: application
+    urls:
+    - https://github.com/jsjolund/colonyos-helm/releases/download/kubeexecutor-0.0.1/kubeexecutor-0.0.1.tgz
+    version: 0.0.1
+  notebook:
+  - apiVersion: v1
+    appVersion: 0.0.1
+    created: "2024-02-15T14:57:54.732240794Z"
+    description: A helm chart for setting up a Jupyter labs with Colonies support
+    digest: 02bb8847deb9ca1e3af6b4c7a1dd63a71a05076e8b3d5caa64dd392bda12085a
+    name: notebook
+    type: application
+    urls:
+    - https://github.com/jsjolund/colonyos-helm/releases/download/notebook-0.0.1/notebook-0.0.1.tgz
+    version: 0.0.1
+  pythonexecutor:
+  - apiVersion: v1
+    appVersion: 0.0.1
+    created: "2024-02-15T14:57:54.904606359Z"
+    description: A Helm chart for a Python executor
+    digest: 1ca84f9142167529967f2f484ee9c333a551fbb5ae9106e804199e055c15c05c
+    name: pythonexecutor
+    type: application
+    urls:
+    - https://github.com/jsjolund/colonyos-helm/releases/download/pythonexecutor-0.0.1/pythonexecutor-0.0.1.tgz
+    version: 0.0.1
+  sleepexecutor:
+  - apiVersion: v1
+    appVersion: 0.0.1
+    created: "2024-02-15T14:57:55.037081741Z"
+    description: A Helm chart for a Sleep executor
+    digest: 5546a901313f90ef166c15b4b3d4e1f1b771085f23e733665af4834ae76fa0b0
+    name: sleepexecutor
+    type: application
+    urls:
+    - https://github.com/jsjolund/colonyos-helm/releases/download/sleepexecutor-0.0.1/sleepexecutor-0.0.1.tgz
+    version: 0.0.1
+  timescaledb:
+  - apiVersion: v1
+    appVersion: 0.0.1
+    created: "2024-02-15T14:57:55.197565304Z"
+    description: A helm chart for deploying a single node TimescaleDB server with
+      a Backup executor
+    digest: 1b2ed7dcfa136ea4614976b0a7ee4a2633765b89173a17902fd95800180bf6b2
+    name: timescaledb
+    type: application
+    urls:
+    - https://github.com/jsjolund/colonyos-helm/releases/download/timescaledb-0.0.1/timescaledb-0.0.1.tgz
+    version: 0.0.1
+generated: "2024-02-15T14:57:55.197575383Z"
