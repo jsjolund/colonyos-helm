@@ -12,6 +12,16 @@ entries:
     - https://github.com/jsjolund/colonyos-helm/releases/download/colonies-0.0.3/colonies-0.0.3.tgz
     version: 0.0.3
   - apiVersion: v1
+    appVersion: 0.0.2
+    created: "2024-02-21T16:14:00.390731958Z"
+    description: A helm chart for deploying Colonies servers
+    digest: 59e0e0a3c4802d46cd57cffa44579ec2d19af74b6951a33eb2cdd70bbc41fb2d
+    name: colonies
+    type: application
+    urls:
+    - https://github.com/jsjolund/colonyos-helm/releases/download/colonies-0.0.2/colonies-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v1
     appVersion: 0.0.1
     created: "2024-02-15T14:57:53.926702783Z"
     description: A helm chart for deploying Colonies servers
@@ -131,4 +141,4 @@ entries:
     urls:
     - https://github.com/jsjolund/colonyos-helm/releases/download/timescaledb-0.0.1/timescaledb-0.0.1.tgz
     version: 0.0.1
-generated: "2024-02-21T15:10:59.365018672Z"
+generated: "2024-02-21T16:14:01.466137498Z"
