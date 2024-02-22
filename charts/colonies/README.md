@@ -30,7 +30,6 @@ Edit `values.yaml` and type:
 | ExposeNodePort                  | Enable/disable nodeports.                                                                                        | true/false                           |
 | NodePort                        | Nodeport to use, must be in range 30000-3276.                                                                    | 30000                                |
 | ImagePullSecret                 | Image pull secret.                                                                                               | PASSWORD                             |
-| ColoniesDBHost                  | Hostname to PostgreSQL server.                                                                                   | "colonies-postgres-service.colonyos" |
 | ColoniesDBPort                  | PostgreSQL server port.                                                                                          | 5432                                 |
 | ColoniesServerReplica           | Number of Colonies servers to start. See High-availability table below.                                          | 3                                    |
 | ColoniesServerImage             | Colonies server Docker image                                                                                     | "colonyos/colonies:latest"           |
@@ -56,7 +55,6 @@ Edit `values.yaml` and type:
 | DBMemory                        | Memory request and limit.                                                                                        | "16000Mi"                            |
 | DBStorage                       | PostgreSQL volume size (/var/lib/postgresql)                                                                     | 10Gi                                 |
 | ColoniesMonitorInterval         | How often (in seconds) to run pull Colonies API for statistics.                                                  | 10                                   |
-| ColoniesServerInternalHostname  | Internal hostname inside pod to Colonies server                                                                  | "colonies-service.colonyos"          |
 | ColoniesMonitorResourceLimit    | Enable CPU and memory limits.                                                                                    | true/false                           |
 | ColoniesMonitorCPU              | CPU request.                                                                                                     | "4000m"                              |
 | ColoniesMonitorMemory           | Memory request and limit.                                                                                        | "16000Mi"                            |
@@ -66,7 +64,6 @@ Edit `values.yaml` and type:
 | PrometheuCPU                    | CPU request.                                                                                                     | "4000m"                              |
 | PrometheuMemory                 | Memory request and limit.                                                                                        | "16000Mi"                            |
 | ScrapeIntervall                 | How often to scrape the Colonies monitor server.                                                                 | 10s                                  |
-| ColoniesMonitoringServer        | Host to the Colonies monitor server.                                                                             | colonies-monitor-service.colonyos    |
 
 # Monitoring
 Use this data source in Grafana.

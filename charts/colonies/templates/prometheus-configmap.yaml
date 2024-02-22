@@ -15,4 +15,4 @@ data:
       - job_name: 'prometheus'
         scrape_interval: {{ .Values.ScrapeIntervall}} 
         static_configs:
-          - targets: ['{{ .Values.ColoniesMonitoringServer }}']
+          - targets: ['colonies-monitor-service.{{ .Release.Namespace }}']
