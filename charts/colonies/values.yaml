@@ -6,6 +6,7 @@ Timezone: "Europe/Stockholm"
 Ingress: true 
 ExposeNodePort: false
 NodePort: 30000  # must be in range 30000-32767 
+IngressAnnotations: true
 # IngressController: nginx
 IngressController: traefik 
 ColoniesServerHostname: "colonies.colonyos.io"
