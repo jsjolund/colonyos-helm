@@ -1,9 +1,0 @@
-kind: Role
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  namespace: executors
-  name: k8sexecutor-role
-rules:
-- apiGroups: ["*"]
-  resources: ["*"]
-  verbs: ["*"]
