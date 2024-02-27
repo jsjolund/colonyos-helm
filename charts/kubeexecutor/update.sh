@@ -1,4 +1,4 @@
 #!/bin/bash
 
-namespace="kubeexecutor"
-helm upgrade k8sexecutor -f values.yaml -n ${namespace} --wait .
+namespace="johank-kubeexecutor"
+helm upgrade kubeexecutor -f values.yaml -n ${namespace} --wait .

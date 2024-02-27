@@ -1,4 +1,4 @@
 #!/bin/bash
 
-namespace="kubeexecutor"
+namespace="johank-kubeexecutor"
 helm uninstall kubeexecutor -n ${namespace}
