@@ -87,6 +87,16 @@ entries:
     version: 0.0.1
   kubeexecutor:
   - apiVersion: v1
+    appVersion: 0.0.2
+    created: "2024-02-29T10:21:31.35770168Z"
+    description: A Helm chart for a K8s kubeexecutor
+    digest: 5d00af3e084f5644b29eff1e5e08621e6fad5fad5ea47dc3d0a32663f56a6c18
+    name: kubeexecutor
+    type: application
+    urls:
+    - https://github.com/jsjolund/colonyos-helm/releases/download/kubeexecutor-0.0.2/kubeexecutor-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v1
     appVersion: 0.0.1
     created: "2024-02-15T14:57:54.622579135Z"
     description: A Helm chart for a K8s kubeexecutor
@@ -141,4 +151,4 @@ entries:
     urls:
     - https://github.com/jsjolund/colonyos-helm/releases/download/timescaledb-0.0.1/timescaledb-0.0.1.tgz
     version: 0.0.1
-generated: "2024-02-21T16:14:01.466137498Z"
+generated: "2024-02-29T10:21:31.357715536Z"
