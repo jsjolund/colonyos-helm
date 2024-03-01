@@ -8,4 +8,4 @@ spec:
   storageClassName: {{ .Values.StorageClass }}
   resources:
     requests:
-      storage: 1Gi
+      storage: {{ .Values.ExecutorFSSize }}
